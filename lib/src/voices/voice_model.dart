@@ -1,43 +1,75 @@
 import 'package:equatable/equatable.dart';
-import 'package:json_annotation/json_annotation.dart';
 
-part 'voice_model.g.dart';
-
-@JsonSerializable()
 class Voice extends Equatable {
-  @JsonKey(name: "Name")
-  final String name;
-  @JsonKey(name: "DisplayName")
-  final String displayName;
-  @JsonKey(name: "LocalName")
-  final String localName;
-  @JsonKey(name: "ShortName")
-  final String shortName;
-  @JsonKey(name: "Gender")
-  final String gender;
-  @JsonKey(name: "Locale")
-  final String locale;
-  @JsonKey(name: "SampleRateHertz")
-  final String sampleRateHertz;
-  @JsonKey(name: "VoiceType")
-  final String voiceType;
-  @JsonKey(name: "Status")
-  final String status;
+  String? name;
+  String? displayName;
+  String? localName;
+  String? shortName;
+  String? gender;
+  String? locale;
+  String? localeName;
+  List<String>? styleList;
+  String? sampleRateHertz;
+  String? voiceType;
+  String? status;
+  List<String>? rolePlayList;
+  String? wordsPerMinute;
 
   Voice(
-      {required this.name,
-      required this.displayName,
-      required this.localName,
-      required this.shortName,
-      required this.gender,
-      required this.locale,
-      required this.sampleRateHertz,
-      required this.voiceType,
-      required this.status});
+      {this.name,
+      this.displayName,
+      this.localName,
+      this.shortName,
+      this.gender,
+      this.locale,
+      this.localeName,
+      this.styleList,
+      this.sampleRateHertz,
+      this.voiceType,
+      this.status,
+      this.rolePlayList,
+      this.wordsPerMinute});
 
-  factory Voice.fromJson(Map<String, dynamic> json) => _$VoiceFromJson(json);
+  Voice.fromJson(Map<String, dynamic> json) {
+    name = json["Name"];
+    displayName = json["DisplayName"];
+    localName = json["LocalName"];
+    shortName = json["ShortName"];
+    gender = json["Gender"];
+    locale = json["Locale"];
+    localeName = json["LocaleName"];
+    styleList =
+        json["StyleList"] == null ? null : List<String>.from(json["StyleList"]);
+    sampleRateHertz = json["SampleRateHertz"];
+    voiceType = json["VoiceType"];
+    status = json["Status"];
+    rolePlayList = json["RolePlayList"] == null
+        ? null
+        : List<String>.from(json["RolePlayList"]);
+    wordsPerMinute = json["WordsPerMinute"];
+  }
 
-  Map<String, dynamic> toJson() => _$VoiceToJson(this);
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> _data = <String, dynamic>{};
+    _data["Name"] = name;
+    _data["DisplayName"] = displayName;
+    _data["LocalName"] = localName;
+    _data["ShortName"] = shortName;
+    _data["Gender"] = gender;
+    _data["Locale"] = locale;
+    _data["LocaleName"] = localeName;
+    if (styleList != null) {
+      _data["StyleList"] = styleList;
+    }
+    _data["SampleRateHertz"] = sampleRateHertz;
+    _data["VoiceType"] = voiceType;
+    _data["Status"] = status;
+    if (rolePlayList != null) {
+      _data["RolePlayList"] = rolePlayList;
+    }
+    _data["WordsPerMinute"] = wordsPerMinute;
+    return _data;
+  }
 
   @override
   List<Object?> get props => [
