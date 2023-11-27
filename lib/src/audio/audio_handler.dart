@@ -23,7 +23,7 @@ class AudioHandler {
         voice: params.voice,
         text: params.text,
         speed: params.rate ?? 1,
-        style: params.customInfos,
+        style: params.style,
       );
 
       print("ssml.buildSsml: ${ssml.buildSsml}");

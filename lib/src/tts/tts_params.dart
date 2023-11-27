@@ -9,7 +9,7 @@ class TtsParams extends AudioRequestParams {
   TtsParams({
     required Voice voice,
     required String audioFormat,
-    final String? customInfos,
+    final String? style,
     required text,
     double? rate,
   }) : super(
@@ -17,6 +17,6 @@ class TtsParams extends AudioRequestParams {
           text: text,
           voice: voice,
           rate: rate,
-          customInfos: customInfos,
+          style: style,
         );
 }
