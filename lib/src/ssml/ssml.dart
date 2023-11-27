@@ -20,9 +20,10 @@ class Ssml {
             "<voice xml:lang='${voice.locale}' "
             "xml:gender='${voice.gender}' "
             "name='${voice.shortName}'>" +
-        (style != null ? "$style " : "") +
-        "<prosody rate='$speed'>"
-            "$text"
-            "<\/prosody><\/voice><\/speak>";
+        (style != null
+            ? "$style "
+            : "<prosody rate='$speed'>"
+                "$text"
+                "<\/prosody><\/voice><\/speak>");
   }
 }
