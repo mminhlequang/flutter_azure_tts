@@ -34,19 +34,5 @@ class Ssml {
     </voice>
 </speak>
 """;
-    return "<speak version='1.0' "
-            "xmlns='http://www.w3.org/2001/10/synthesis' "
-            "xml:lang=''>"
-            "<voice xml:lang='${voice.locale}' "
-            "xml:gender='${voice.gender}' "
-            "name='${voice.shortName}'>" +
-        (style != null
-            ? "<mstts:express-as style='$style'>"
-                "$text"
-                "<\/mstts:express-as>"
-            : "<prosody rate='$speed'>"
-                "$text"
-                "<\/prosody>") +
-        "<\/voice><\/speak>";
   }
 }
