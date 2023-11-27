@@ -21,8 +21,12 @@ class Ssml {
             "xml:gender='${voice.gender}' "
             "name='${voice.shortName}'>" +
         (style != null
-            ? "<mstts:express-as style='$style' rate='$speed>$text</mstts:express-as>"
-            : "<prosody rate='$speed'> $text <\/prosody>") +
+            ? "<mstts:express-as style='$style'>"
+                "$text"
+                "<\/mstts:express-as>"
+            : "<prosody rate='$speed'>"
+                "$text"
+                "<\/prosody>") +
         "<\/voice><\/speak>";
   }
 }
