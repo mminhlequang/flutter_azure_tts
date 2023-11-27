@@ -19,8 +19,14 @@ class AudioHandler {
         audioTypeHeader: AudioTypeHeader(audioFormat: params.audioFormat));
 
     try {
-      final ssml =
-          Ssml(voice: params.voice, text: params.text, speed: params.rate ?? 1);
+      final ssml = Ssml(
+        voice: params.voice,
+        text: params.text,
+        speed: params.rate ?? 1,
+        customInfos: params.customInfos,
+      );
+
+      print("ssml.buildSsml: ${ssml.buildSsml}");
 
       final response = await audioClient.post(Uri.parse(Endpoints.audio),
           body: ssml.buildSsml);
