@@ -5,23 +5,23 @@ class Ssml {
     required this.voice,
     required this.text,
     required this.speed,
-    this.customInfos,
+    this.style,
   });
 
   final Voice voice;
   final String text;
   final double speed;
-  final String? customInfos;
+  final String? style;
 
   String get buildSsml {
     return "<speak version='1.0' "
             "xmlns='http://www.w3.org/2001/10/synthesis' "
             "xml:lang='${voice.locale}'>"
-            "<voice xml:lang='${voice.locale}' " +
-        (customInfos != null ? "$customInfos " : "") +
-        "xml:gender='${voice.gender}' "
-            "name='${voice.shortName}'>"
-            "<prosody rate='$speed'>"
+            "<voice xml:lang='${voice.locale}' "
+            "xml:gender='${voice.gender}' "
+            "name='${voice.shortName}'>" +
+        (style != null ? "$style " : "") +
+        "<prosody rate='$speed'>"
             "$text"
             "<\/prosody><\/voice><\/speak>";
   }
